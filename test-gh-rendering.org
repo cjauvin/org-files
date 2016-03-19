@@ -14,3 +14,10 @@
 | here    | there    |
 | and     | this     |
 |---------+----------|
+
+** Source
+
+#+begin_src python
+def foo():
+    pass
+#+end_src
