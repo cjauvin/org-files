@@ -6,14 +6,16 @@
 
 - [ ] bla
 - [X] coucou
+- http://www.example.com
 
 ** A table:
 
-| bla bla | blou bou |
-|---------+----------|
-| here    | there    |
-| and     | this     |
-|---------+----------|
+| bla bla | blou bou               |
+|---------+------------------------|
+| here    | there                  |
+| and     | this                   |
+|         | http://www.example.com |
+|---------+------------------------|
 
 ** Source
 
