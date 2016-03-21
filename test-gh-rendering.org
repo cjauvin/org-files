@@ -23,3 +23,60 @@
 def foo():
     pass
 #+end_src
+
+** Math
+
+*** Probs
+
+http://blog.cloudera.com/blog/2015/12/common-probability-distributions-the-data-scientists-crib-sheet/
+
+*** Sensitivity and specificiy
+
+    |   | T                        | F                       |                                               |
+    |---+--------------------------+-------------------------+-----------------------------------------------|
+    | t | TP                       | FP                      | <- Precision:                                 |
+    | f | FN                       | TN                      | TP / (TP + FP)                                |
+    |   |                          |                         | of those retrieved as +, how many really are, |
+    |   |                          |                         | or: prob of truly + given +                   |
+    |---+--------------------------+-------------------------+-----------------------------------------------|
+    |   | Sensitivity (or Recall): | Specificity:            |                                               |
+    |   | TP / (TP + FN)           | TN / (FP + TN)          |                                               |
+    |   | prob of + given truly +  | prob of - given truly - |                                               |
+
+**** Exemple 1:
+
+http://archinte.jamanetwork.com/article.aspx?articleid=1861033
+https://news.ycombinator.com/item?id=11325085
+
+Prevalence == prior prob of being sick = 1/1000
+False positive rate == prob of + given healthy = 5% (which implies a specifity of 95%)
+Test has perfect sensitivity => if you are sick, it will always be +
+
+|   |           T (Sick) |                  F (Healthy) |                            |
+|---+--------------------+------------------------------+----------------------------|
+| + |                  1 |                           50 | PPV=1/(50 + 1)=~2% (=PREC) |
+| - |                  0 |                          949 |                            |
+|---+--------------------+------------------------------+----------------------------|
+|   | total=1, SENS=100% | total=999, SPEC=949/999=~95% | total=1000                 |
+
+So the counter-intetuive conclusion is that the PPV (change of being
+really sick if you tested +)is so small (2%) given that the SPEC (1 -
+FPR) is so high.
+
+**** Exemple 2:
+
+http://betterexplained.com/articles/an-intuitive-and-short-explanation-of-bayes-theorem/
+
+Prevalence == prior prob of having cancer = 1/100
+Sensitivity == prob of + given truly sick = 80%
+False positive rate == prob of + given healthy = 10% (which implies that specificity == prob of - given healthy = 90%)
+
+|   |                T (Sick) |                 F (Healthy) |                              |
+|---+-------------------------+-----------------------------+------------------------------|
+| + |                       8 |                          99 | PPV=8/(8 + 99)=~7.5% (=PREC) |
+| - |                       2 |                         891 |                              |
+|---+-------------------------+-----------------------------+------------------------------|
+|   | total=10, SENS=8/10=80% | total=990, SPEC=891/990=90% | total=1000                   |
+
+So again here the counter-intuitive conclusion is that the PPV is so
+low given that SENS and SPEC are so high.
